@@ -51,6 +51,8 @@ namespace Corrade {
 
 @subsubsection corrade-changelog-latest-new-containers Containers library
 
+-   New @ref Containers::BasicStringView "Containers::StringView" class as a
+    lightweight but more flexible alternative to C++17 @ref std::string_view
 -   New @ref Containers::arrayAppend(), @ref Containers::arrayReserve() family
     of functions for opt-in growable arrays. See @ref Containers-Array-growable
     and [mosra/corrade#83](https://github.com/mosra/corrade/issues/83) for more
