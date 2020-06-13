@@ -228,6 +228,9 @@ namespace Corrade {
     as it being unavailable was a pointless restriction hurting portability
 -   @ref Utility::Directory::mkpath() now properly reports errors instead of
     just arrogantly returning @cpp false @ce (see [mosra/corrade#92](https://github.com/mosra/corrade/pull/92))
+-   @ref Utility::String::split() and
+    @ref Utility::String::splitWithoutEmptyParts() now have
+    @ref Containers::StringView overloads that allocate much less
 
 @subsection corrade-changelog-latest-buildsystem Build system
 
