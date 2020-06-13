@@ -133,6 +133,8 @@ namespace Corrade {
     @ref Utility::Debug::newline and an inverse of @ref Utility::Debug::nospace
 -   Added a @ref Utility::Endianness::fourCC() utility for creating
     endian-independent four-character codes
+-   @ref Utility::Configuration and @ref Utility::Arguments can now read and
+    write @ref Containers::String and @ref Containers::StringView values
 
 @subsection corrade-changelog-latest-changes Changes and improvements
 
