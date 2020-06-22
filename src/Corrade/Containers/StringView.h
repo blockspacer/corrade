@@ -398,12 +398,13 @@ template<class T> class CORRADE_UTILITY_EXPORT BasicStringView {
         template<class> friend class BasicStringView;
         friend String;
 
-        friend bool operator==(StringView a, StringView b);
-        friend bool operator!=(StringView a, StringView b);
-        friend bool operator<(StringView a, StringView b);
-        friend bool operator<=(StringView a, StringView b);
-        friend bool operator>=(StringView a, StringView b);
-        friend bool operator>(StringView a, StringView b);
+        /* MSVC demands the export macro to be here as well */
+        friend CORRADE_UTILITY_EXPORT bool operator==(StringView a, StringView b);
+        friend CORRADE_UTILITY_EXPORT bool operator!=(StringView a, StringView b);
+        friend CORRADE_UTILITY_EXPORT bool operator<(StringView a, StringView b);
+        friend CORRADE_UTILITY_EXPORT bool operator<=(StringView a, StringView b);
+        friend CORRADE_UTILITY_EXPORT bool operator>=(StringView a, StringView b);
+        friend CORRADE_UTILITY_EXPORT bool operator>(StringView a, StringView b);
 
         /* Used by slice() to skip unneeded checks in the public constexpr
            constructor */
@@ -484,6 +485,9 @@ constexpr StringView operator"" _s(const char* data, std::size_t size) {
 }
 
 }
+
+/* Without this, MSVC linker complains that this symbol isn't found */
+template<> template<> BasicStringView<const char>::BasicStringView(const String& string) noexcept;
 
 template<class T> constexpr BasicStringView<T> BasicStringView<T>::slice(T* const begin, T* const end) const {
     return CORRADE_CONSTEXPR_ASSERT(_data <= begin && begin <= end && end <= _data + (_size & ~Implementation::StringViewSizeMask),
